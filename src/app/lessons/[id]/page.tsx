@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { formatDate } from "@/lib/format";
+import Markdown from "react-markdown";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -35,7 +36,7 @@ async function Lesson({ params }: Props) {
     <article className="mt-6 flex flex-col gap-6">
       <header>
         <p className="text-sm text-neutral-500">
-          {formatDate(lesson.date)} · {lesson.subject}
+          {formatDate(lesson.date)} · {lesson.subject_label}
         </p>
         <h1 className="text-3xl font-semibold">{lesson.title}</h1>
         {lesson.main_idea && (
@@ -45,7 +46,9 @@ async function Lesson({ params }: Props) {
         )}
       </header>
 
-      <div className="whitespace-pre-line leading-relaxed">{lesson.body}</div>
+      <div className="flex flex-col gap-4 leading-relaxed [&_ol]:list-decimal [&_ol]:pl-5 [&_strong]:font-semibold">
+        <Markdown>{lesson.body}</Markdown>
+      </div>
 
       {lesson.kid_version && (
         <section className="rounded-xl bg-amber-50 p-4 dark:bg-amber-950">

@@ -18,7 +18,7 @@ async function LessonList() {
   const supabase = await createClient();
   const { data: lessons, error } = await supabase
     .from("lessons")
-    .select("id, date, subject, title, main_idea")
+    .select("id, date, subject, title, main_idea, subject_label")
     .order("date", { ascending: false });
 
   if (error || !lessons) {
@@ -38,7 +38,7 @@ async function LessonList() {
             className="block rounded-xl border border-neutral-200 p-4 transition hover:bg-neutral-50 dark:border-neutral-800 dark:hover:bg-neutral-900"
           >
             <p className="text-sm text-neutral-500">
-              {formatDate(lesson.date)} · {lesson.subject}
+              {formatDate(lesson.date)} · {lesson.subject_label}
             </p>
             <h2 className="text-lg font-medium">{lesson.title}</h2>
             {lesson.main_idea && (
