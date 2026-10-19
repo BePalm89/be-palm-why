@@ -38,7 +38,7 @@ describe("chunkText", () => {
 
   it("rifiuta overlapWords >= maxWords", () => {
     expect(() =>
-      chunkText(words(10), { maxWords: 5, overlapWords: 5 })
+      chunkText(words(10), { maxWords: 5, overlapWords: 5 }),
     ).toThrow();
   });
 });

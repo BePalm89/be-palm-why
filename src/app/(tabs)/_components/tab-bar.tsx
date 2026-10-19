@@ -1,51 +1,52 @@
-"use client"
+"use client";
 
-import { House, MapIcon, MessageCircle, Repeat } from "lucide-react"
-import TabBarItem, { type TabBarItemType } from "./tab-item"
+import { House, MapIcon, MessageCircle, Repeat } from "lucide-react";
+import TabBarItem, { type TabBarItemType } from "./tab-item";
 import { usePathname } from "next/navigation";
 
 const ITEMS: TabBarItemType[] = [
-    {
-        url: "/",
-        text: "Oggi",
-        Icon: House
-    },
-    {
-        url: "/paths",
-        text: "Percorsi",
-        Icon: MapIcon
-    },
-    {
-        url: "/review",
-        text: "Ripasso",
-        Icon: Repeat
-    },
-    {
-        url: "/ask",
-        text: "Chiedi",
-        Icon: MessageCircle
-    }
+  {
+    url: "/",
+    text: "Oggi",
+    Icon: House,
+  },
+  {
+    url: "/paths",
+    text: "Percorsi",
+    Icon: MapIcon,
+  },
+  {
+    url: "/review",
+    text: "Ripasso",
+    Icon: Repeat,
+  },
+  {
+    url: "/ask",
+    text: "Chiedi",
+    Icon: MessageCircle,
+  },
 ];
 
 function isActive(pathname: string, href: string): boolean {
+  if (href === "/") {
+    return href === pathname;
+  }
 
-    if (href === "/") {
-        return href === pathname;
-    };
-
-    return pathname.startsWith(href);
-};
+  return pathname.startsWith(href);
+}
 
 export default function TabBar() {
+  const pathname = usePathname();
 
-    const pathname = usePathname();
-    
-
-    return (
-        <nav aria-label="Navigazione principale" className="flex sticky bottom-0 bg-white border-t border-ink/10">
-            {ITEMS.map((item) => {
-                const active = isActive(pathname, item.url);
-                return <TabBarItem key={item.url} {...item} active={active}/>})}
-        </nav>
-    )
+  return (
+    <nav
+      aria-label="Navigazione principale"
+      className="sticky bottom-0 flex border-t border-ink/10 bg-white"
+    >
+      {ITEMS.map((item) => {
+        const active = isActive(pathname, item.url);
+        return <TabBarItem key={item.url} {...item} active={active} />;
+      })}
+    </nav>
+  );
 }

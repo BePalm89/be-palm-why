@@ -6,42 +6,45 @@
 
 ## Why I'm building this
 
-Every morning I study a short general-knowledge lesson: history, science, art, geography. I want to remember what I learn, and one day answer my son's endless *"why?"* questions.
+Every morning I study a short general-knowledge lesson: history, science, art, geography. I want to remember what I learn, and one day answer my son's endless _"why?"_ questions.
 
 This app turns those lessons into something I can reread, review and talk to. It is also my portfolio project for AI application engineering, built in short sessions with a newborn in my arms.
 
 ## Features
 
 **v1: The notebook**
+
 - Import lessons from a structured JSON export
 - "Today" screen: today's lesson and progress by subject
 - Read, search and filter lessons by subject
 - Installable PWA (works from the iPhone home screen)
 
 **v2: AI that makes me study**
+
 - Quizzes and flashcards scheduled with spaced repetition (FSRS)
 - **Ask**: natural-language questions answered only from my lessons, citing lesson and date (RAG)
 - **Your turn**: explain a lesson out loud; speech-to-text, then feedback on what I got right and what's missing (LLM-as-judge)
 
 **v3: Polish**
+
 - Text-to-speech for listening on walks
 - Stats: streaks, strongest and weakest subjects
 - Public demo with sample data
 
 ## Tech stack
 
-| Layer | Choice |
-|---|---|
-| Frontend | Next.js (App Router), TypeScript, Tailwind CSS |
-| Mobile | Installable PWA |
-| Database & auth | Supabase (Postgres, Auth, Storage) with Row Level Security |
-| Semantic search | pgvector |
-| LLM | Groq via the Vercel AI SDK (provider-agnostic) |
-| Embeddings | Transformers.js (`multilingual-e5-small`), in the browser |
-| Speech-to-text | Web Speech API |
-| Spaced repetition | `ts-fsrs` |
-| Testing & evals | Vitest + a custom evaluation set |
-| Deploy | Vercel |
+| Layer             | Choice                                                     |
+| ----------------- | ---------------------------------------------------------- |
+| Frontend          | Next.js (App Router), TypeScript, Tailwind CSS             |
+| Mobile            | Installable PWA                                            |
+| Database & auth   | Supabase (Postgres, Auth, Storage) with Row Level Security |
+| Semantic search   | pgvector                                                   |
+| LLM               | Groq via the Vercel AI SDK (provider-agnostic)             |
+| Embeddings        | Transformers.js (`multilingual-e5-small`), in the browser  |
+| Speech-to-text    | Web Speech API                                             |
+| Spaced repetition | `ts-fsrs`                                                  |
+| Testing & evals   | Vitest + a custom evaluation set                           |
+| Deploy            | Vercel                                                     |
 
 ## AI engineering highlights
 

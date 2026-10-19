@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-paper: #F3F4EF;
-  --color-ink: #17202B;
-  --color-accent: #C2410C;
-  --color-muted: #4A5563;
+  --color-paper: #f3f4ef;
+  --color-ink: #17202b;
+  --color-accent: #c2410c;
+  --color-muted: #4a5563;
   --font-heading: var(--font-bricolage);
   --font-body: var(--font-atkinson);
 }
-
 
 body {
   background-color: var(--color-paper);
@@ -16,6 +15,11 @@ body {
   font-family: var(--font-body);
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
 }

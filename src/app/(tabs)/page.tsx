@@ -1,5 +1,3 @@
-export default function TodayPage( ) {
-    return (
-        <h1>Oggi</h1>
-    )
+export default function TodayPage() {
+  return <h1>Oggi</h1>;
 }

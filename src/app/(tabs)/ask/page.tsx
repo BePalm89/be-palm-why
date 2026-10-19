@@ -1,5 +1,3 @@
 export default function AskPage() {
-    return (
-        <h1>Chiedi page</h1>
-    )
+  return <h1>Chiedi page</h1>;
 }
