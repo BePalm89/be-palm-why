@@ -38,18 +38,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${bricolage.variable} ${atkinson.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <main>
-          {children}
-        </main>
-        <header>
-          <nav className="flex gap-4">
-            <Link href="/">Lezioni</Link>
-            <Link href="/percorsi">Percorsi</Link>
-            <Link href="/ripasso">Ripasso</Link>
-            <Link href="/chiedi">Chiedi</Link>
-          </nav>
 
-        </header>
+          {children}
+      
       </body>
 
     </html>
