@@ -26,12 +26,12 @@ const ITEMS: TabBarItemType[] = [
 
 export default function TabsLayout({ children }: LayoutProps<"/">) {
     return (
-        <>
-            <main className="pb-20">{children}</main>
-            <nav aria-label="Navigazione principale" className="flex fixed bottom-0 w-full bg-white border-t">
+        <div className="flex flex-col mx-auto w-full min-h-dvh max-w-md">
+            <main className="flex-1">{children}</main>
+            <nav aria-label="Navigazione principale" className="flex sticky bottom-0 bg-white border-ink/10">
                 {ITEMS.map((item) => <TabBarItem key={item.url} {...item} />)}
             </nav>
-        </>
+        </div>
 
     )
 }
