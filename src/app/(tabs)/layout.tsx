@@ -1,4 +1,4 @@
-import TabBarItem, { TabBarItemType } from "./_components/tab-item";
+import TabBarItem, { type TabBarItemType } from "./_components/tab-item";
 
 const ITEMS: TabBarItemType[] = [
     {

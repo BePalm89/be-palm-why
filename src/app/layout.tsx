@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Bricolage_Grotesque, Atkinson_Hyperlegible } from "next/font/google";
+import { Bricolage_Grotesque, Atkinson_Hyperlegible } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",

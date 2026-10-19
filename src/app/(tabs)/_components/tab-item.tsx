@@ -6,7 +6,7 @@ export type TabBarItemType = {
     text: string;
 }
 
-export default function TabBarItem({url, icon, text}: TabBarItemType) {
+export default function TabBarItem({url, text}: TabBarItemType) {
     return (
        <Link href={url} className="flex-1 text-center py-2">{text}</Link>
     )

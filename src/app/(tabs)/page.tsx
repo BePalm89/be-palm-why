@@ -1,5 +1,5 @@
 export default function TodayPage( ) {
     return (
-        <h1>Today</h1>
+        <h1>Oggi</h1>
     )
 }
