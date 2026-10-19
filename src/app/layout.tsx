@@ -1,15 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Bricolage_Grotesque, Atkinson_Hyperlegible } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const atkinson = Atkinson_Hyperlegible({
+  variable: "--font-atkinson",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -33,9 +35,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="it"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${bricolage.variable} ${atkinson.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <main>
+          {children}
+        </main>
+        <header>
+          <nav className="flex gap-4">
+            <Link href="/">Lezioni</Link>
+            <Link href="/percorsi">Percorsi</Link>
+            <Link href="/ripasso">Ripasso</Link>
+            <Link href="/chiedi">Chiedi</Link>
+          </nav>
+
+        </header>
+      </body>
+
     </html>
   );
 }
