@@ -3,6 +3,7 @@
 import { House, MapIcon, MessageCircle, Repeat } from "lucide-react";
 import TabBarItem, { type TabBarItemType } from "./tab-item";
 import { usePathname } from "next/navigation";
+import formatDate from "@/lib/utils/format-date";
 
 const ITEMS: TabBarItemType[] = [
   {
