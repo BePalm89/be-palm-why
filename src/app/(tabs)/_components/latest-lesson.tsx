@@ -1,14 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
+import LessonCard, { type LessonCardProps } from "./lesson-card";
+
+type LatestLessonRow = NonNullable<
+  Awaited<ReturnType<typeof getLatestLesson>>["data"]
+>;
 
 export default async function LatestLesson() {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
-    .from("lessons")
-    .select("title")
-    .order("date", { ascending: false })
-    .limit(1)
-    .maybeSingle();
+  const { data, error } = await getLatestLesson();
 
   if (error) {
     console.error(error);
@@ -19,5 +17,30 @@ export default async function LatestLesson() {
     return <p>Nessuna lezione</p>;
   }
 
-  return <h2>{data.title}</h2>;
+  const lesson = mapLesson(data);
+
+  return <LessonCard {...lesson} />;
 }
+
+const mapLesson = (data: LatestLessonRow): LessonCardProps => {
+  return {
+    id: data.id,
+    title: data.title,
+    subject: data.subject_label,
+    step: data.step,
+    mainIdea: data.main_idea,
+  };
+};
+
+const getLatestLesson = async () => {
+  const supabase = await createClient();
+
+  const response = await supabase
+    .from("lessons")
+    .select("id, title, step, main_idea, subject_label")
+    .order("date", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  return response;
+};
