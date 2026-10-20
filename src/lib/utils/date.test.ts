@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { formatDate, isToday } from "./date";
 
-describe("format date", () => {
+describe("formatDate", () => {
   it.each([
     { date: new Date("2026-10-20T06:00:00Z"), expected: "Martedì 20 ottobre" },
     { date: new Date("2026-10-19T22:30:00Z"), expected: "Martedì 20 ottobre" },
@@ -11,7 +11,7 @@ describe("format date", () => {
   });
 });
 
-describe("is today", () => {
+describe("isToday", () => {
   it.each([
     {
       lessonDate: "2026-10-20",

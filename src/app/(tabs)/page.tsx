@@ -3,7 +3,7 @@ import LatestLesson from "./_components/latest-lesson";
 import TodayDate from "./_components/today-date";
 import LessonCardSkeleton from "./_components/lesson-card-skeleton";
 
-const TodayPage = () => {
+export default function TodayPage() {
   return (
     <div>
       <div className="my-4 flex flex-col gap-1">
@@ -27,6 +27,4 @@ const TodayPage = () => {
       </Suspense>
     </div>
   );
-};
-
-export default TodayPage;
+}

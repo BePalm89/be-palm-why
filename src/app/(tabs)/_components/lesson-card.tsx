@@ -12,14 +12,14 @@ export type LessonCardProps = {
   isFromToday: boolean;
 };
 
-const LessonCard = ({
+export default function LessonCard({
   id,
   title,
   subject,
   step,
   mainIdea,
   isFromToday,
-}: LessonCardProps) => {
+}: LessonCardProps) {
   const label = badgeLabel(subject, step);
 
   const titleId = useId();
@@ -61,6 +61,4 @@ const LessonCard = ({
       </Link>
     </article>
   );
-};
-
-export default LessonCard;
+}

@@ -1,4 +1,4 @@
-const LessonCardSkeleton = () => {
+export default function LessonCardSkeleton() {
   return (
     <article
       role="status"
@@ -27,6 +27,4 @@ const LessonCardSkeleton = () => {
       />
     </article>
   );
-};
-
-export default LessonCardSkeleton;
+}
