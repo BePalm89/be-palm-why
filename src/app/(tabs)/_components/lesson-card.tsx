@@ -19,7 +19,11 @@ const LessonCard = ({
 }: LessonCardProps) => {
   const label = badgeLabel(subject, step);
   return (
-    <article className="flex flex-col gap-3.5 rounded-3xl bg-ink p-5.5 text-white">
+    <article
+      className="flex flex-col gap-3.5 rounded-3xl bg-ink p-5.5 text-white"
+      role="status"
+      aria-label="Caricamento della lezione"
+    >
       {label && (
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-badge-bg px-2.5 py-1.25 text-[13px] font-bold text-badge-text">

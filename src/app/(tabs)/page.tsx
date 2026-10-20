@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import LatestLesson from "./_components/latest-lesson";
 import TodayDate from "./_components/today-date";
+import LessonCardSkeleton from "./_components/lesson-card-skeleton";
 
 const TodayPage = () => {
   return (
@@ -21,7 +22,7 @@ const TodayPage = () => {
           Buongiorno, Claudia
         </h1>
       </div>
-      <Suspense fallback={<p>Caricamento</p>}>
+      <Suspense fallback={<LessonCardSkeleton />}>
         <LatestLesson />
       </Suspense>
     </div>
