@@ -36,7 +36,7 @@ const getLatestLesson = async () => {
 
   const response = await supabase
     .from("lessons")
-    .select("id, title, step, main_idea, subject_label")
+    .select("id, title, step, main_idea, subject_label, date")
     .order("date", { ascending: false })
     .limit(1)
     .maybeSingle();
