@@ -3,6 +3,7 @@
 import { House, MapIcon, MessageCircle, Repeat } from "lucide-react";
 import TabBarItem, { type TabBarItemType } from "./tab-item";
 import { usePathname } from "next/navigation";
+import { isActive } from "../_utils/is-active";
 
 const ITEMS: TabBarItemType[] = [
   {
@@ -26,14 +27,6 @@ const ITEMS: TabBarItemType[] = [
     Icon: MessageCircle,
   },
 ];
-
-function isActive(pathname: string, href: string): boolean {
-  if (href === "/") {
-    return href === pathname;
-  }
-
-  return pathname.startsWith(href);
-}
 
 export default function TabBar() {
   const pathname = usePathname();
