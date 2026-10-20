@@ -31,7 +31,10 @@ export default function LessonCard({
     >
       {label && (
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-badge-bg px-2.5 py-1.25 text-[13px] font-bold text-badge-text">
+          <span
+            data-testid="lesson-badge"
+            className="rounded-full bg-badge-bg px-2.5 py-1.25 text-[13px] font-bold text-badge-text"
+          >
             {label}
           </span>
         </div>
@@ -49,7 +52,12 @@ export default function LessonCard({
       </h2>
 
       {mainIdea && (
-        <p className="text-base leading-[1.45] text-card-text">{mainIdea}</p>
+        <p
+          data-testid="lesson-main-idea"
+          className="text-base leading-[1.45] text-card-text"
+        >
+          {mainIdea}
+        </p>
       )}
 
       <Link
