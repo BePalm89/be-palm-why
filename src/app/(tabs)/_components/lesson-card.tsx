@@ -1,3 +1,4 @@
+import badgeLabel from "@/lib/utils/badge-label";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -18,10 +19,10 @@ const LessonCard = ({
 }: LessonCardProps) => {
   const label = badgeLabel(subject, step);
   return (
-    <article className="flex flex-col gap-3.5 rounded-3xl bg-ink p-[22px] text-white">
+    <article className="flex flex-col gap-3.5 rounded-3xl bg-ink p-5.5 text-white">
       {label && (
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-badge-bg px-2.5 py-[5px] text-[13px] font-bold text-badge-text">
+          <span className="rounded-full bg-badge-bg px-2.5 py-1.25 text-[13px] font-bold text-badge-text">
             {label}
           </span>
         </div>
@@ -41,23 +42,13 @@ const LessonCard = ({
 
       <Link
         href={`/lessons/${id}`}
-        className="flex items-center gap-2 self-start rounded-[14px] bg-white px-5 py-[13px] font-bold text-ink"
+        className="flex items-center gap-2 self-start rounded-[14px] bg-white px-5 py-3.25 font-bold text-ink"
       >
         Inizia a leggere
         <ArrowRight size={18} aria-hidden="true" />
       </Link>
     </article>
   );
-};
-
-const badgeLabel = (subject: string | null, step: number | null): string => {
-  if (step === null && !subject) return "";
-
-  if (!subject) return `Tappa ${step}`;
-
-  if (step === null) return subject;
-
-  return `${subject} · Tappa ${step}`;
 };
 
 export default LessonCard;
