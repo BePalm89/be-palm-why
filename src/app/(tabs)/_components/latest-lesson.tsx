@@ -9,8 +9,7 @@ export default async function LatestLesson() {
   const { data, error } = await getLatestLesson();
 
   if (error) {
-    console.error(error);
-    return <p>Errore nel caricare i dati</p>;
+    throw error;
   }
 
   if (!data) {
