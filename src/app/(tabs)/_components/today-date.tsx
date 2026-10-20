@@ -8,8 +8,6 @@ const TodayDate = async () => {
 
   const today = formatDate(new Date());
 
-  console.log(isToday("2026-10-13", new Date("2026-10-19T22:30:00Z")));
-
   return <p className="text-[15px] text-muted">{today}</p>;
 };
 

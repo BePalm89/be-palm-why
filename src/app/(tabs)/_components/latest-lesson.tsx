@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import LessonCard, { type LessonCardProps } from "./lesson-card";
+import { isToday } from "@/lib/utils/date";
 
 type LatestLessonRow = NonNullable<
   Awaited<ReturnType<typeof getLatestLesson>>["data"]
@@ -16,18 +17,20 @@ export default async function LatestLesson() {
     return <p>Nessuna lezione</p>;
   }
 
-  const lesson = mapLesson(data);
+  const now = new Date();
+  const lesson = mapLesson(data, now);
 
   return <LessonCard {...lesson} />;
 }
 
-const mapLesson = (data: LatestLessonRow): LessonCardProps => {
+const mapLesson = (data: LatestLessonRow, now: Date): LessonCardProps => {
   return {
     id: data.id,
     title: data.title,
     subject: data.subject_label,
     step: data.step,
     mainIdea: data.main_idea,
+    isFromToday: isToday(data.date, now),
   };
 };
 

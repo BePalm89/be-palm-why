@@ -16,9 +16,7 @@ export const formatDate = (date: Date): string => {
 export const isToday = (lessonDate: string, now: Date): boolean => {
   const todayInMadrid = new Intl.DateTimeFormat("en-CA", {
     timeZone: TIME_ZONE,
-  }).format(new Date(now));
-
-  console.log(todayInMadrid);
+  }).format(now);
 
   return lessonDate === todayInMadrid;
 };

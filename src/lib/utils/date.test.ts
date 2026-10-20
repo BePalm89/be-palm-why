@@ -11,7 +11,7 @@ describe("format date", () => {
   });
 });
 
-describe("format date", () => {
+describe("is today", () => {
   it.each([
     {
       lessonDate: "2026-10-20",

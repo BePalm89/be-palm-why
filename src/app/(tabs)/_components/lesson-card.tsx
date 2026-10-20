@@ -1,6 +1,7 @@
 import badgeLabel from "@/lib/utils/badge-label";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useId } from "react";
 
 export type LessonCardProps = {
   id: string;
@@ -8,6 +9,7 @@ export type LessonCardProps = {
   subject: string | null;
   step: number | null;
   mainIdea: string | null;
+  isFromToday: boolean;
 };
 
 const LessonCard = ({
@@ -16,13 +18,16 @@ const LessonCard = ({
   subject,
   step,
   mainIdea,
+  isFromToday,
 }: LessonCardProps) => {
   const label = badgeLabel(subject, step);
+
+  const titleId = useId();
+
   return (
     <article
       className="flex flex-col gap-3.5 rounded-3xl bg-ink p-5.5 text-white"
-      role="status"
-      aria-label="Caricamento della lezione"
+      aria-labelledby={titleId}
     >
       {label && (
         <div className="flex items-center gap-2">
@@ -33,10 +38,13 @@ const LessonCard = ({
       )}
 
       <p className="text-sm tracking-[0.08em] text-card-muted uppercase">
-        La lezione di oggi
+        {isFromToday ? "La lezione di oggi" : "La tua ultima lezione"}
       </p>
 
-      <h2 className="font-heading text-[28px] leading-[1.15] font-bold">
+      <h2
+        className="font-heading text-[28px] leading-[1.15] font-bold"
+        id={titleId}
+      >
         {title}
       </h2>
 
