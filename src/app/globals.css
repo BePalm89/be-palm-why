@@ -7,6 +7,10 @@
   --color-muted: #4a5563;
   --font-heading: var(--font-bricolage);
   --font-body: var(--font-atkinson);
+  --color-card-muted: #c9cfd8;   /* "5 min", "LA LEZIONE DI OGGI" */
+  --color-card-text: #e3e7ed;    /* testo dell'idea principale */
+  --color-badge-bg: #f7efd2;
+  --color-badge-text: #6b4e05;
 }
 
 body {
