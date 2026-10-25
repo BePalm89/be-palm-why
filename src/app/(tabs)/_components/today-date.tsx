@@ -1,4 +1,4 @@
-import { formatDate, isToday } from "@/lib/utils/date";
+import { formatDate } from "@/lib/utils/date";
 import { connection } from "next/server";
 
 export default async function TodayDate() {
