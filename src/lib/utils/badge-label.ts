@@ -1,4 +1,7 @@
-const badgeLabel = (subject: string | null, step: number | null): string => {
+export const badgeLabel = (
+  subject: string | null,
+  step: number | null,
+): string => {
   if (step === null && !subject) return "";
 
   if (!subject) return `Tappa ${step}`;
@@ -7,5 +10,3 @@ const badgeLabel = (subject: string | null, step: number | null): string => {
 
   return `${subject} · Tappa ${step}`;
 };
-
-export default badgeLabel;

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import badgeLabel from "./badge-label";
+import { badgeLabel } from "./badge-label";
 
 describe("badgeLabel", () => {
   it.each([

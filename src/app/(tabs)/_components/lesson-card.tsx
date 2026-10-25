@@ -1,4 +1,4 @@
-import badgeLabel from "@/lib/utils/badge-label";
+import { badgeLabel } from "@/lib/utils/badge-label";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useId } from "react";
