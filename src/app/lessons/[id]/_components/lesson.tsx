@@ -1,6 +1,11 @@
 import { createClient } from "@/lib/supabase/server";
 import { isValidLessonId } from "@/lib/utils/lesson-id";
 import { notFound } from "next/navigation";
+import LessonContent, { LessonContentProps } from "./lesson-content";
+
+type LatestLessonRow = NonNullable<
+  Awaited<ReturnType<typeof getLesson>>["data"]
+>;
 
 type LessonProps = {
   params: Promise<{
@@ -18,7 +23,9 @@ export default async function Lesson({ params }: LessonProps) {
 
   if (!data) notFound();
 
-  return <p>{data.title}</p>;
+  const lesson = mapLesson(data);
+
+  return <LessonContent {...lesson} />;
 }
 
 const getLesson = async (id: string) => {
@@ -31,4 +38,13 @@ const getLesson = async (id: string) => {
     .maybeSingle();
 
   return response;
+};
+
+const mapLesson = (data: LatestLessonRow): LessonContentProps => {
+  return {
+    title: data.title,
+    subject: data.subject_label,
+    step: data.step,
+    mainIdea: data.main_idea,
+  };
 };

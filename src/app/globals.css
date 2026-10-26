@@ -11,6 +11,8 @@
   --color-card-text: #e3e7ed;    /* testo dell'idea principale */
   --color-badge-bg: #f7efd2;
   --color-badge-text: #6b4e05;
+  --color-idea-bg: #fdf1e9;   
+  --color-idea-label: #9a3412;
 }
 
 body {
