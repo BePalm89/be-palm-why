@@ -1,10 +1,12 @@
 export default function LessonCardSkeleton() {
   return (
-    <article
+    <div
       role="status"
       aria-label="Caricamento della lezione"
       className="flex animate-pulse flex-col gap-3.5 rounded-3xl bg-ink p-5.5"
     >
+      <span className="sr-only">Caricamento della lezione di oggi</span>
+
       <div
         aria-hidden="true"
         className="h-[29.5px] w-36 rounded-full bg-white/15"
@@ -25,6 +27,6 @@ export default function LessonCardSkeleton() {
         aria-hidden="true"
         className="h-12.5 w-46.25 rounded-[14px] bg-white/15"
       />
-    </article>
+    </div>
   );
 }

@@ -1,11 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import { isValidLessonId } from "@/lib/utils/lesson-id";
 import { notFound } from "next/navigation";
-import LessonContent, { LessonContentProps } from "./lesson-content";
+import LessonContent, { type LessonContentProps } from "./lesson-content";
 
-type LatestLessonRow = NonNullable<
-  Awaited<ReturnType<typeof getLesson>>["data"]
->;
+type LessonRow = NonNullable<Awaited<ReturnType<typeof getLesson>>["data"]>;
 
 type LessonProps = {
   params: Promise<{
@@ -33,14 +31,14 @@ const getLesson = async (id: string) => {
 
   const response = await supabase
     .from("lessons")
-    .select("id, title, subject_label, main_idea, step")
+    .select("title, subject_label, main_idea, step")
     .eq("id", id)
     .maybeSingle();
 
   return response;
 };
 
-const mapLesson = (data: LatestLessonRow): LessonContentProps => {
+const mapLesson = (data: LessonRow): LessonContentProps => {
   return {
     title: data.title,
     subject: data.subject_label,
