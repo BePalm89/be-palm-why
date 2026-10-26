@@ -1,5 +1,6 @@
 import { badgeLabel } from "@/lib/utils/badge-label";
 import { useId } from "react";
+import LabeledBox from "./labeled-box";
 
 export type LessonContentProps = {
   title: string;
@@ -35,18 +36,9 @@ export default function LessonContent({
         {title}
       </h1>
       {mainIdea && (
-        <section
-          aria-labelledby={mainIdeaId}
-          className="flex flex-col gap-1.5 rounded-2xl bg-idea-bg px-4.5 py-4"
-        >
-          <h2
-            className="font-body text-[13px] font-bold tracking-[0.06em] text-idea-label uppercase"
-            id={mainIdeaId}
-          >
-            L'idea principale
-          </h2>
+        <LabeledBox label="L'idea principale" variant="highlight">
           <p className="text-[17px] leading-[1.45] font-bold">{mainIdea}</p>
-        </section>
+        </LabeledBox>
       )}
     </article>
   );
