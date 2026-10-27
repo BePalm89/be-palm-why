@@ -2,10 +2,11 @@ import { Suspense } from "react";
 import LatestLesson from "./_components/latest-lesson";
 import TodayDate from "./_components/today-date";
 import LessonCardSkeleton from "./_components/lesson-card-skeleton";
+import PathsProgress from "./_components/paths-progress";
 
 export default function TodayPage() {
   return (
-    <div>
+    <div className="mb-3">
       <div className="my-4 flex flex-col gap-1">
         <Suspense
           fallback={
@@ -23,7 +24,10 @@ export default function TodayPage() {
         </h1>
       </div>
       <Suspense fallback={<LessonCardSkeleton />}>
-        <LatestLesson />
+        <div className="flex flex-col gap-3.5">
+          <LatestLesson />
+          <PathsProgress />
+        </div>
       </Suspense>
     </div>
   );
