@@ -31,7 +31,7 @@ const getLesson = async (id: string) => {
 
   const response = await supabase
     .from("lessons")
-    .select("title, subject_label, main_idea, step")
+    .select("title, subject_label, main_idea, step, body, kid_version")
     .eq("id", id)
     .maybeSingle();
 
@@ -44,5 +44,7 @@ const mapLesson = (data: LessonRow): LessonContentProps => {
     subject: data.subject_label,
     step: data.step,
     mainIdea: data.main_idea,
+    body: data.body,
+    kidVersion: data.kid_version,
   };
 };

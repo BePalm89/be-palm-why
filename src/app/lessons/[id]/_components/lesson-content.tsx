@@ -1,12 +1,14 @@
 import { badgeLabel } from "@/lib/utils/badge-label";
-import { useId } from "react";
 import LabeledBox from "./labeled-box";
+import Markdown from "react-markdown";
 
 export type LessonContentProps = {
   title: string;
   subject: string | null;
   step: number | null;
   mainIdea: string | null;
+  body: string;
+  kidVersion: string | null;
 };
 
 export default function LessonContent({
@@ -14,9 +16,9 @@ export default function LessonContent({
   subject,
   step,
   mainIdea,
+  body,
+  kidVersion,
 }: LessonContentProps) {
-  const mainIdeaId = useId();
-
   const label = badgeLabel(subject, step);
 
   return (
@@ -38,6 +40,12 @@ export default function LessonContent({
       {mainIdea && (
         <LabeledBox label="L'idea principale" variant="highlight">
           <p className="text-[17px] leading-[1.45] font-bold">{mainIdea}</p>
+        </LabeledBox>
+      )}
+      {body && <Markdown>{body}</Markdown>}
+      {kidVersion && (
+        <LabeledBox label="Come lo spiegheresti a Luca" variant="dashed">
+          <p className="text-[16px] leading-[1.45]">{kidVersion}</p>
         </LabeledBox>
       )}
     </article>
