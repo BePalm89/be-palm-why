@@ -225,6 +225,33 @@ export type Database = {
         }
         Relationships: []
       }
+      paths: {
+        Row: {
+          color: string | null
+          created_at: string
+          label: string
+          subject: string
+          total_steps: number
+          user_id: string
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string
+          label: string
+          subject: string
+          total_steps: number
+          user_id?: string
+        }
+        Update: {
+          color?: string | null
+          created_at?: string
+          label?: string
+          subject?: string
+          total_steps?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

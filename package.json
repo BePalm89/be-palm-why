@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
-    "import:lessons": "tsx --env-file=.env.local scripts/import-lessons.ts"
+    "import:lessons": "tsx --env-file=.env.local scripts/import-lessons.ts",
+    "db:types": "supabase gen types typescript --linked > src/lib/supabase/database.types.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
