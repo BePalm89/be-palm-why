@@ -75,7 +75,7 @@ describe("LessonContent", () => {
     render(<LessonContent {...baseProps} />);
 
     expect(
-      screen.getByRole("region", { name: "Come lo spiegheresti a Luca" }),
+      screen.queryByRole("region", { name: "Come lo spiegheresti a Luca" }),
     ).toBeInTheDocument();
   });
 
