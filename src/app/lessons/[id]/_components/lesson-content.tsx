@@ -42,7 +42,11 @@ export default function LessonContent({
           <p className="text-[17px] leading-[1.45] font-bold">{mainIdea}</p>
         </LabeledBox>
       )}
-      {body && <Markdown>{body}</Markdown>}
+      {body && (
+        <div className="flex flex-col gap-4 text-[17px] leading-[1.55] [&_a]:text-accent [&_a]:underline [&_h2]:font-heading [&_h2]:text-[22px] [&_h2]:leading-[1.2] [&_h2]:font-bold [&_ol]:list-decimal [&_ol]:pl-5 [&_ul]:list-disc [&_ul]:pl-5">
+          <Markdown>{body}</Markdown>
+        </div>
+      )}
       {kidVersion && (
         <LabeledBox label="Come lo spiegheresti a Luca" variant="dashed">
           <p className="text-[16px] leading-[1.45]">{kidVersion}</p>
