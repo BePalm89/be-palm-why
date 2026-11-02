@@ -3,7 +3,7 @@ import LatestLesson from "./_components/latest-lesson";
 import TodayDate from "./_components/today-date";
 import LessonCardSkeleton from "./_components/lesson-card-skeleton";
 import PathsProgress from "./_components/paths-progress";
-import PathsProgressSkeleton from "./_components/path-progress-skeleton";
+import PathsProgressSkeleton from "./_components/paths-progress-skeleton";
 
 export default function TodayPage() {
   return (

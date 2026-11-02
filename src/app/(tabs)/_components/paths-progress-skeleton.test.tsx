@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
-import PathsProgressSkeleton from "./path-progress-skeleton";
+import PathsProgressSkeleton from "./paths-progress-skeleton";
 
 afterEach(cleanup);
 
