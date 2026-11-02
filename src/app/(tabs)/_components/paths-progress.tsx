@@ -15,6 +15,7 @@ export default async function PathsProgress() {
   if (lessonsResponse.error) throw lessonsResponse.error;
 
   const grouped = groupStepsBySubject(lessonsResponse.data);
+  console.log(grouped);
 
   const items: PathProgressItem[] = pathsResponse.data.map((path) => {
     const progress = pathProgress(
