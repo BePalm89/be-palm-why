@@ -3,6 +3,7 @@ import LatestLesson from "./_components/latest-lesson";
 import TodayDate from "./_components/today-date";
 import LessonCardSkeleton from "./_components/lesson-card-skeleton";
 import PathsProgress from "./_components/paths-progress";
+import PathsProgressSkeleton from "./_components/path-progress-skeleton";
 
 export default function TodayPage() {
   return (
@@ -23,12 +24,15 @@ export default function TodayPage() {
           Buongiorno, Claudia
         </h1>
       </div>
-      <Suspense fallback={<LessonCardSkeleton />}>
-        <div className="flex flex-col gap-3.5">
+      <div className="flex flex-col gap-3.5">
+        <Suspense fallback={<LessonCardSkeleton />}>
           <LatestLesson />
+        </Suspense>
+
+        <Suspense fallback={<PathsProgressSkeleton />}>
           <PathsProgress />
-        </div>
-      </Suspense>
+        </Suspense>
+      </div>
     </div>
   );
 }
