@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import LessonsBySubject from "./_components/lessons-by-subject";
+import LessonsBySubjectSkeleton from "./_components/lessons-by-subject-skeleton";
 
 export default function PathsPage() {
   return (
@@ -13,7 +14,7 @@ export default function PathsPage() {
         </p>
       </div>
 
-      <Suspense fallback={<p>caricando</p>}>
+      <Suspense fallback={<LessonsBySubjectSkeleton />}>
         <LessonsBySubject />
       </Suspense>
     </div>
