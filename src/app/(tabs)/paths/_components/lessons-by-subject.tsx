@@ -30,11 +30,11 @@ export default async function LessonsBySubject() {
   });
 
   return (
-    <>
+    <div className="flex flex-col gap-5">
       {subjectSections.map((section) => {
         return <SubjectSection {...section} key={section.subject} />;
       })}
-    </>
+    </div>
   );
 }
 

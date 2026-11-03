@@ -22,33 +22,33 @@ export default function SubjectSection({
   stepDone,
 }: SubjectSectionProps) {
   return (
-    <section className="mt-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div
-            className="h-4 w-4 rounded-full"
-            style={{
-              backgroundColor: color ?? "var(--color-ink)",
-            }}
-          ></div>
-          <h3 className="text-2xl">{labelSubject}</h3>
-        </div>
-        <div>
-          <p>
-            {stepDone} / {totalStep}
-          </p>
-        </div>
+    <section className="flex flex-col gap-2.5">
+      <div className="flex items-baseline justify-between">
+        <h2 className="flex items-center gap-2 font-heading text-xl font-bold">
+          <span
+            aria-hidden="true"
+            className="size-2.5 shrink-0 rounded-full"
+            style={{ backgroundColor: color ?? "var(--color-ink)" }}
+          />
+          {labelSubject}
+        </h2>
+        <p className="text-sm text-muted">
+          {stepDone} / {totalStep}
+        </p>
       </div>
+
       {lessons.length ? (
-        <ul>
+        <ul className="divide-y divide-track rounded-[20px] bg-white px-4.5">
           {lessons.map((lesson) => (
             <li key={lesson.id}>
-              <LessonRow {...lesson} />
+              <LessonRow {...lesson} color={color} />
             </li>
           ))}
         </ul>
       ) : (
-        <p>Non hai ancora nessuna lezione per questo percorso</p>
+        <p className="rounded-[20px] bg-white px-4.5 py-4 text-[15px] text-muted">
+          Non hai ancora nessuna lezione per questo percorso
+        </p>
       )}
     </section>
   );
