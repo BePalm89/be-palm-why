@@ -20,3 +20,15 @@ export const isToday = (lessonDate: string, now: Date): boolean => {
 
   return lessonDate === todayInMadrid;
 };
+
+export const formatDayMonth = (dateString: string): string => {
+  const date = new Date(dateString);
+
+  const dateOnly = new Intl.DateTimeFormat("it-IT", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(date);
+
+  return dateOnly;
+};

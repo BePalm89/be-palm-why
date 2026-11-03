@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { formatDate, isToday } from "./date";
+import { formatDate, isToday, formatDayMonth } from "./date";
 
 describe("formatDate", () => {
   it.each([
@@ -37,6 +37,20 @@ describe("isToday", () => {
     'returns "$expected" when lessonDate is $lessonDate and now is $now',
     ({ lessonDate, now, expected }) => {
       expect(isToday(lessonDate, now)).toBe(expected);
+    },
+  );
+});
+
+describe("formatDayMonth", () => {
+  it.each([
+    { dateString: "2026-10-01", expected: "1 ottobre" },
+    { dateString: "2026-10-10", expected: "10 ottobre" },
+    { dateString: "2026-10-31", expected: "31 ottobre" },
+    { dateString: "2027-03-14", expected: "14 marzo" },
+  ])(
+    'returns "$expected" when date is $dateString',
+    ({ dateString, expected }) => {
+      expect(formatDayMonth(dateString)).toBe(expected);
     },
   );
 });
