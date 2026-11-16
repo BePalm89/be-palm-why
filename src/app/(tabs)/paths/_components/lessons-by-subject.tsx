@@ -31,9 +31,15 @@ export default async function LessonsBySubject() {
 
   return (
     <div className="flex flex-col gap-5">
-      {subjectSections.map((section) => {
-        return <SubjectSection {...section} key={section.subject} />;
-      })}
+      {subjectSections.length ? (
+        subjectSections.map((section) => {
+          return <SubjectSection {...section} key={section.subject} />;
+        })
+      ) : (
+        <p className="rounded-[20px] bg-white px-4.5 py-4 text-[15px] text-muted">
+          Non hai ancora nessun percorso
+        </p>
+      )}
     </div>
   );
 }

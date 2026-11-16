@@ -32,7 +32,10 @@ export default function SubjectSection({
           />
           {labelSubject}
         </h2>
-        <p className="text-sm text-muted">
+        <p className="sr-only">
+          {stepDone} tappe fatte su {totalStep}
+        </p>
+        <p className="text-sm text-muted" aria-hidden="true">
           {stepDone} / {totalStep}
         </p>
       </div>
