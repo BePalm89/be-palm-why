@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import SubjectSection from "./subject-section";
 import { groupLessonsBySubject } from "@/lib/utils/group-lessons-by-subject";
 import { pathProgress } from "@/lib/utils/path-progress";
+import { sortLessonsByStep } from "@/lib/utils/sort-lessons-by-step";
 
 export default async function LessonsBySubject() {
   const [pathsResponse, lessonsResponse] = await Promise.all([
@@ -12,7 +13,9 @@ export default async function LessonsBySubject() {
   if (pathsResponse.error) throw pathsResponse.error;
   if (lessonsResponse.error) throw lessonsResponse.error;
 
-  const grouped = groupLessonsBySubject(lessonsResponse.data);
+  const sortedLessonByStep = sortLessonsByStep(lessonsResponse.data);
+
+  const grouped = groupLessonsBySubject(sortedLessonByStep);
 
   const subjectSections = pathsResponse.data.map((path) => {
     const steps = grouped[path.subject]?.map((g) => g.step) ?? [];
