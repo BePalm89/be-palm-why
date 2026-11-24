@@ -5,7 +5,13 @@ import { pathProgress } from "@/lib/utils/path-progress";
 import { sortLessonsByStep } from "@/lib/utils/sort-lessons-by-step";
 import FilterBySubject from "./filter-by-subject";
 
-export default async function LessonsBySubject() {
+export default async function LessonsBySubject({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { subject } = await searchParams;
+
   const [pathsResponse, lessonsResponse] = await Promise.all([
     getPaths(),
     getLessons(),

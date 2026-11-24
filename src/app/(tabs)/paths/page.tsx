@@ -2,7 +2,11 @@ import { Suspense } from "react";
 import LessonsBySubject from "./_components/lessons-by-subject";
 import LessonsBySubjectSkeleton from "./_components/lessons-by-subject-skeleton";
 
-export default function PathsPage() {
+export default function PathsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   return (
     <div className="mb-3 flex flex-col gap-5">
       <div className="mt-4 flex flex-col gap-1">
@@ -15,7 +19,7 @@ export default function PathsPage() {
       </div>
 
       <Suspense fallback={<LessonsBySubjectSkeleton />}>
-        <LessonsBySubject />
+        <LessonsBySubject searchParams={searchParams} />
       </Suspense>
     </div>
   );
