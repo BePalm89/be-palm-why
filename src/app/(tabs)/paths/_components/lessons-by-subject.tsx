@@ -16,8 +16,6 @@ export default async function LessonsBySubject() {
 
   const sortedLessonByStep = sortLessonsByStep(lessonsResponse.data);
 
-  const { label, subject } = pathsResponse.data;
-
   const grouped = groupLessonsBySubject(sortedLessonByStep);
 
   const subjectSections = pathsResponse.data.map((path) => {
