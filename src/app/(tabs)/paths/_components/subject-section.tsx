@@ -21,6 +21,11 @@ export default function SubjectSection({
   totalStep,
   stepDone,
 }: SubjectSectionProps) {
+  const screenReaderProgressLabel =
+    stepDone === 1
+      ? `${stepDone} tappa fatta su ${totalStep}`
+      : `${stepDone} tappe fatte su ${totalStep}`;
+
   return (
     <section className="flex flex-col gap-2.5">
       <div className="flex items-baseline justify-between">
@@ -32,9 +37,7 @@ export default function SubjectSection({
           />
           {labelSubject}
         </h2>
-        <p className="sr-only">
-          {stepDone} tappe fatte su {totalStep}
-        </p>
+        <p className="sr-only">{screenReaderProgressLabel}</p>
         <p className="text-sm text-muted" aria-hidden="true">
           {stepDone} / {totalStep}
         </p>
