@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { formatDayMonth } from "@/lib/utils/date";
 
-type LessonRowProps = Lesson & {
+export type LessonRowProps = Lesson & {
   color: string | null;
 };
 
