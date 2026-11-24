@@ -3,6 +3,7 @@ import SubjectSection from "./subject-section";
 import { groupLessonsBySubject } from "@/lib/utils/group-lessons-by-subject";
 import { pathProgress } from "@/lib/utils/path-progress";
 import { sortLessonsByStep } from "@/lib/utils/sort-lessons-by-step";
+import FilterBySubject from "./filter-by-subject";
 
 export default async function LessonsBySubject() {
   const [pathsResponse, lessonsResponse] = await Promise.all([
@@ -14,6 +15,8 @@ export default async function LessonsBySubject() {
   if (lessonsResponse.error) throw lessonsResponse.error;
 
   const sortedLessonByStep = sortLessonsByStep(lessonsResponse.data);
+
+  const { label, subject } = pathsResponse.data;
 
   const grouped = groupLessonsBySubject(sortedLessonByStep);
 
@@ -33,17 +36,20 @@ export default async function LessonsBySubject() {
   });
 
   return (
-    <div className="flex flex-col gap-5">
-      {subjectSections.length ? (
-        subjectSections.map((section) => {
-          return <SubjectSection {...section} key={section.subject} />;
-        })
-      ) : (
-        <p className="rounded-[20px] bg-white px-4.5 py-4 text-[15px] text-muted">
-          Non hai ancora nessun percorso
-        </p>
-      )}
-    </div>
+    <>
+      <FilterBySubject paths={pathsResponse.data} />
+      <div className="flex flex-col gap-5">
+        {subjectSections.length ? (
+          subjectSections.map((section) => {
+            return <SubjectSection {...section} key={section.subject} />;
+          })
+        ) : (
+          <p className="rounded-[20px] bg-white px-4.5 py-4 text-[15px] text-muted">
+            Non hai ancora nessun percorso
+          </p>
+        )}
+      </div>
+    </>
   );
 }
 
