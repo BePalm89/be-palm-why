@@ -1,12 +1,8 @@
-type Lesson = {
-  id: string;
-  title: string;
-  date: string;
-  step: number | null;
-  subject: string;
-};
+import type { Lesson } from "@/lib/types/lesson";
 
-export const sortLessonsByStep = (lessons: Lesson[]): Lesson[] => {
+type LessonItem = Pick<Lesson, "id" | "title" | "step" | "subject" | "date">;
+
+export const sortLessonsByStep = (lessons: LessonItem[]): LessonItem[] => {
   return [...lessons].sort((a, b) => {
     if (a.step === b.step) return a.date.localeCompare(b.date);
 

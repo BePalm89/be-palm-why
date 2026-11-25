@@ -1,15 +1,11 @@
-type Lesson = {
-  id: string;
-  title: string;
-  date: string;
-  step: number | null;
-  subject: string;
-};
+import type { Lesson } from "@/lib/types/lesson";
+
+type LessonItem = Pick<Lesson, "id" | "title" | "step" | "subject" | "date">;
 
 export const groupLessonsBySubject = (
-  lessons: Lesson[],
-): Record<string, Omit<Lesson, "subject">[]> => {
-  const result: Record<string, Omit<Lesson, "subject">[]> = {};
+  lessons: LessonItem[],
+): Record<string, Omit<LessonItem, "subject">[]> => {
+  const result: Record<string, Omit<LessonItem, "subject">[]> = {};
 
   for (const lesson of lessons) {
     if (!Object.hasOwn(result, lesson.subject)) {

@@ -1,15 +1,12 @@
 import LessonRow from "./lesson-row";
+import type { Lesson } from "@/lib/types/lesson";
 
-export type Lesson = {
-  step: number | null;
-  title: string;
-  date: string;
-  id: string;
-};
+export type LessonItem = Pick<Lesson, "id" | "step" | "title" | "date">;
+
 export type SubjectSectionProps = {
   color: string | null;
   labelSubject: string;
-  lessons: Lesson[];
+  lessons: LessonItem[];
   totalStep: number;
   stepDone: number;
 };

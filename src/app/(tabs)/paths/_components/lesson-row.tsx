@@ -1,9 +1,9 @@
-import { Lesson } from "./subject-section";
+import type { LessonItem } from "./subject-section";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { formatDayMonth } from "@/lib/utils/date";
 
-export type LessonRowProps = Lesson & {
+export type LessonRowProps = LessonItem & {
   color: string | null;
 };
 

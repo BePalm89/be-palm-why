@@ -1,10 +1,9 @@
-type Lesson = {
-  subject: string;
-  step: number | null;
-};
+import type { Lesson } from "@/lib/types/lesson";
+
+type LessonItem = Pick<Lesson, "subject" | "step">;
 
 export const groupStepsBySubject = (
-  lessons: Lesson[],
+  lessons: LessonItem[],
 ): Record<string, (number | null)[]> => {
   const result: Record<string, (number | null)[]> = {};
 
