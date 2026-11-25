@@ -3,7 +3,7 @@ import type { Tables } from "@/lib/supabase/database.types";
 
 type PathOption = Pick<Tables<"paths">, "subject" | "label">;
 
-type FilterBySubjectProps = {
+export type FilterBySubjectProps = {
   paths: PathOption[];
   subjectParam: string | null;
 };
