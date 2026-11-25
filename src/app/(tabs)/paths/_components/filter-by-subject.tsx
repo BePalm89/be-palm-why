@@ -5,6 +5,7 @@ type PathOption = Pick<Tables<"paths">, "subject" | "label">;
 
 type FilterBySubjectProps = {
   paths: PathOption[];
+  subjectParam: string | null;
 };
 
 const chipClassName = (isActive: boolean) =>
@@ -12,8 +13,11 @@ const chipClassName = (isActive: boolean) =>
     isActive ? "bg-ink font-bold text-white" : "bg-white text-ink"
   }`;
 
-export default function FilterBySubject({ paths }: FilterBySubjectProps) {
-  const isAllActive = false; // TODO: quando è attiva "Tutte"?
+export default function FilterBySubject({
+  paths,
+  subjectParam,
+}: FilterBySubjectProps) {
+  const isAllActive = subjectParam === null;
 
   return (
     <nav
@@ -21,7 +25,7 @@ export default function FilterBySubject({ paths }: FilterBySubjectProps) {
       className="flex gap-2 overflow-x-auto pb-2"
     >
       <Link
-        href="/paths" // TODO: verifica che sia l'URL giusto per "Tutte"
+        href="/paths"
         aria-current={isAllActive ? "page" : undefined}
         className={chipClassName(isAllActive)}
       >
@@ -29,12 +33,12 @@ export default function FilterBySubject({ paths }: FilterBySubjectProps) {
       </Link>
 
       {paths.map((path) => {
-        const isActive = false; // TODO: quando è attiva questa materia?
+        const isActive = subjectParam === path.subject;
 
         return (
           <Link
             key={path.subject}
-            href="/paths" // TODO: l'URL con il query param di questa materia
+            href={`/paths?subject=${encodeURIComponent(path.subject)}`}
             aria-current={isActive ? "page" : undefined}
             className={chipClassName(isActive)}
           >

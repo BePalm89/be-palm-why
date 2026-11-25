@@ -50,7 +50,10 @@ export default async function LessonsBySubject({
 
   return (
     <>
-      <FilterBySubject paths={pathsResponse.data} />
+      <FilterBySubject
+        paths={pathsResponse.data}
+        subjectParam={parsedSubjectParam}
+      />
       <div className="flex flex-col gap-5">
         {filteredSubjectSections.length ? (
           filteredSubjectSections.map((section) => {
