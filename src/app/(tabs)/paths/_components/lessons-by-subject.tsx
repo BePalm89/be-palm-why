@@ -4,6 +4,7 @@ import { groupLessonsBySubject } from "@/lib/utils/group-lessons-by-subject";
 import { pathProgress } from "@/lib/utils/path-progress";
 import { sortLessonsByStep } from "@/lib/utils/sort-lessons-by-step";
 import FilterBySubject from "./filter-by-subject";
+import { parseSubjectParam } from "@/lib/utils/parse-subject-param";
 
 export default async function LessonsBySubject({
   searchParams,
@@ -19,6 +20,10 @@ export default async function LessonsBySubject({
 
   if (pathsResponse.error) throw pathsResponse.error;
   if (lessonsResponse.error) throw lessonsResponse.error;
+
+  const allowedPathList = pathsResponse.data.map((path) => path.subject);
+
+  const parsedSubjectParam = parseSubjectParam(subject, allowedPathList);
 
   const sortedLessonByStep = sortLessonsByStep(lessonsResponse.data);
 
@@ -39,12 +44,16 @@ export default async function LessonsBySubject({
     };
   });
 
+  const filteredSubjectSections = subjectSections.filter(
+    (sub) => parsedSubjectParam === null || sub.subject === parsedSubjectParam,
+  );
+
   return (
     <>
       <FilterBySubject paths={pathsResponse.data} />
       <div className="flex flex-col gap-5">
-        {subjectSections.length ? (
-          subjectSections.map((section) => {
+        {filteredSubjectSections.length ? (
+          filteredSubjectSections.map((section) => {
             return <SubjectSection {...section} key={section.subject} />;
           })
         ) : (
