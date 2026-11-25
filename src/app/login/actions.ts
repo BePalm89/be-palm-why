@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 
 export async function login(
   _prevState: { error: string } | null,
-  formData: FormData
+  formData: FormData,
 ) {
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");

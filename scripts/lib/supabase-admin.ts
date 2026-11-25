@@ -5,7 +5,7 @@ const secretKey = process.env.SUPABASE_SECRET_KEY;
 
 if (!url || !secretKey) {
   throw new Error(
-    "Mancano NEXT_PUBLIC_SUPABASE_URL o SUPABASE_SECRET_KEY in .env.local"
+    "Mancano NEXT_PUBLIC_SUPABASE_URL o SUPABASE_SECRET_KEY in .env.local",
   );
 }
 

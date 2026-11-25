@@ -1,0 +1,34 @@
+const TIME_ZONE = "Europe/Madrid";
+
+export const formatDate = (date: Date): string => {
+  const formatted = new Intl.DateTimeFormat("it-IT", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    timeZone: TIME_ZONE,
+  }).format(date);
+
+  const capitalized = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+
+  return capitalized;
+};
+
+export const isToday = (lessonDate: string, now: Date): boolean => {
+  const todayInMadrid = new Intl.DateTimeFormat("en-CA", {
+    timeZone: TIME_ZONE,
+  }).format(now);
+
+  return lessonDate === todayInMadrid;
+};
+
+export const formatDayMonth = (dateString: string): string => {
+  const date = new Date(dateString);
+
+  const dateOnly = new Intl.DateTimeFormat("it-IT", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(date);
+
+  return dateOnly;
+};

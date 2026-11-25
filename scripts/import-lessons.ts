@@ -1,7 +1,10 @@
 import { readFile } from "node:fs/promises";
 import { z } from "zod";
 import { supabaseAdmin } from "./lib/supabase-admin";
-import { notebookExportSchema, type NotebookLesson } from "./lib/notebook-schema";
+import {
+  notebookExportSchema,
+  type NotebookLesson,
+} from "./lib/notebook-schema";
 
 // Traduce una lezione del quaderno in una riga della tabella lessons
 function toRow(lesson: NotebookLesson, userId: string) {
