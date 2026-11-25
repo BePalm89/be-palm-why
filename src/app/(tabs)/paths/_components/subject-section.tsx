@@ -1,4 +1,4 @@
-import LessonRow from "./lesson-row";
+import CollapsibleLessonList from "./collapsible-lesson-list";
 import type { Lesson } from "@/lib/types/lesson";
 
 export type LessonItem = Pick<Lesson, "id" | "step" | "title" | "date">;
@@ -41,13 +41,7 @@ export default function SubjectSection({
       </div>
 
       {lessons.length ? (
-        <ul className="divide-y divide-track rounded-[20px] bg-white px-4.5">
-          {lessons.map((lesson) => (
-            <li key={lesson.id}>
-              <LessonRow {...lesson} color={color} />
-            </li>
-          ))}
-        </ul>
+        <CollapsibleLessonList lessons={lessons} color={color} />
       ) : (
         <p className="rounded-[20px] bg-white px-4.5 py-4 text-[15px] text-muted">
           Non hai ancora nessuna lezione per questo percorso
